@@ -1,4 +1,4 @@
-package oit.is.z0793.janken.model;
+package oit.is.z0793.kaizi.janken.model;
 
 public class Janken{
 

@@ -1,4 +1,4 @@
-package oit.is.z0793.janken.controller;
+package oit.is.z0793.kaizi.janken.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,8 +15,9 @@ public class Lec02Controller {
     //@return
 
 
-  @GetMapping("/lec02/{id}")
-  public String lec02(@PathVariable String name,ModelMap model){
+  @GetMapping("/lec02")
+  public String lec02(@RequestParam String name,ModelMap model){
+
     model.addAttribute("name",name);
     return "lec02.html";
   }
