@@ -12,13 +12,17 @@ import oit.is.z0793.kaizi.janken.model.Janken;
 @Controller
 public class Lec02Controller {
 
-
   @GetMapping("/lec02")
-  public String lec02(@RequestParam String name,ModelMap model){
-
-    model.addAttribute("name",name);
+  public String lec021(){
     return "lec02.html";
   }
+
+  //@GetMapping("/lec02")
+  //public String lec02(@RequestParam String name,ModelMap model){
+
+  //  model.addAttribute("name",name);
+  //  return "lec02.html";
+  //}
 
 
   //@param model
