@@ -13,19 +13,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class Lec03AuthConfiguration extends WebSecurityConfigurerAdapter {
 
-  /**
-   * 誰がログインできるか(認証処理)
-   */
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
     // $ sshrun htpasswd -nbBC 10 user1 pAssw0rd
-    auth.inMemoryAuthentication().withUser("user1")
-        .password("$2y$10$rJ9yqGht2W96MdIJICRQQOuUiYrt2eDokKnDuZZof2DPs83PN6QdC").roles("USER");
-    auth.inMemoryAuthentication().withUser("admin")
-        .password("$2y$10$rJ9yqGht2W96MdIJICRQQOuUiYrt2eDokKnDuZZof2DPs83PN6QdC").roles("ADMIN");
+    auth.inMemoryAuthentication().withUser("takashi")
+        .password("$2y$10$ZtQdV/i9/WqsCNd2hIq2OOpjzQnhUCj3T40j2c1T46GxWAorgpufy").roles("USER");
+    auth.inMemoryAuthentication().withUser("aki")
+        .password("$2y$10$ZtQdV/i9/WqsCNd2hIq2OOpjzQnhUCj3T40j2c1T46GxWAorgpufy").roles("ADMIN");
 
-    // 開発中は↓の書き方でも良いが，平文でパスワードが保存される
+
     // auth.inMemoryAuthentication().withUser("user1").password(passwordEncoder().encode("pAssw0rd")).roles("USER");
     // auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder().encode("pAssw0rd")).roles("ADMIN");
   }
@@ -39,7 +36,6 @@ public class Lec03AuthConfiguration extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
 
-    // Spring Securityのフォームを利用してログインを行う
     http.formLogin();
 
     http.authorizeRequests().antMatchers("/lec02/**").authenticated();
