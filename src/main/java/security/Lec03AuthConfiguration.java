@@ -18,9 +18,11 @@ public class Lec03AuthConfiguration extends WebSecurityConfigurerAdapter {
 
     // $ sshrun htpasswd -nbBC 10 user1 pAssw0rd
     auth.inMemoryAuthentication().withUser("takashi")
-        .password("$2y$10$ZtQdV/i9/WqsCNd2hIq2OOpjzQnhUCj3T40j2c1T46GxWAorgpufy").roles("USER");
+        .password("$2y$10$ZtQdV/i9/WqsCNd2hIq2OOpjzQnhUCj3T40j2c1T46GxWAorgpufy").roles("TAKASHI");
     auth.inMemoryAuthentication().withUser("aki")
-        .password("$2y$10$ZtQdV/i9/WqsCNd2hIq2OOpjzQnhUCj3T40j2c1T46GxWAorgpufy").roles("ADMIN");
+        .password("$2y$10$ZtQdV/i9/WqsCNd2hIq2OOpjzQnhUCj3T40j2c1T46GxWAorgpufy").roles("AKI");
+    auth.inMemoryAuthentication().withUser("くぼた")
+        .password("$2y$10$ZtQdV/i9/WqsCNd2hIq2OOpjzQnhUCj3T40j2c1T46GxWAorgpufy").roles("USER");
 
 
     // auth.inMemoryAuthentication().withUser("user1").password(passwordEncoder().encode("pAssw0rd")).roles("USER");
