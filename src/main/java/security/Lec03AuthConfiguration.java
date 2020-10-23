@@ -37,10 +37,13 @@ public class Lec03AuthConfiguration extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
 
     http.formLogin();
-
     http.authorizeRequests().antMatchers("/lec02/**").authenticated();
-
     http.logout().logoutSuccessUrl("/");
+
+    http.csrf().disable();
+    http.headers().frameOptions().disable();
   }
+
+
 
 }
