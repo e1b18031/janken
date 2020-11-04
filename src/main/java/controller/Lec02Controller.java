@@ -1,9 +1,11 @@
 package oit.is.z0793.kaizi.janken.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import oit.is.z0793.kaizi.janken.model.Janken;
 
 import oit.is.z0793.kaizi.janken.model.Entry;
+
+import oit.is.z0793.kaizi.janken.model.User;
+import oit.is.z0793.kaizi.janken.model.UserMapper;
+//import oit.is.z0793.kaizi.janken.model.ChamberUser;
+//import oit.is.z0793.kaizi.janken.model.UserInfo;
 
 @Controller
 public class Lec02Controller {
@@ -91,5 +98,16 @@ public class Lec02Controller {
 
     //return "lec02.html";
   //}
+
+  @Autowired
+  UserMapper UserMapper;
+
+  @GetMapping("lec02/{id}")
+  public String lec02Id(@PathVariable Integer id, ModelMap model) {
+    User User2 = UserMapper.selectById(id);
+    model.addAttribute("User2", User2);
+
+    return "lec02.html";
+  }
 
 }

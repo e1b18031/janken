@@ -15,9 +15,15 @@
   <div th:if="${entry}">
     エントリー
     <ul>
-      <li th:each="user : ${entry.users}">[[${user}]]</li>
+      <li th:each="user : ${entry.users}"><a href="/lec02/1">[[${user}]]</a></li>
     </ul>
     Hi <span sec:authentication="name"></span>
+  </div>
+
+  <div th:if="${User2}">
+    ID:[[${User2.id}]]
+    user_1:[[${User2.user_1}]]
+    user_2:[[${User2.user_2}]]
   </div>
 
   <a href="/lec02janken?hand=Gu">ぐー</a>
