@@ -25,10 +25,10 @@ import oit.is.z0793.kaizi.janken.model.UserMapper;
 @Controller
 public class Lec02Controller {
 
-  @GetMapping("/lec02")
-  public String lec021(){
-    return "lec02.html";
-  }
+  //@GetMapping("/lec02")
+  //public String lec021(){
+    //return "lec02.html";
+  //}
 
 
 
@@ -102,12 +102,22 @@ public class Lec02Controller {
   @Autowired
   UserMapper UserMapper;
 
-  @GetMapping("lec02/{id}")
-  public String lec02Id(@PathVariable Integer id, ModelMap model) {
-    User User2 = UserMapper.selectById(id);
+  @GetMapping("lec02")
+  public String lec02IdName(ModelMap model) {
+    ArrayList<User> User1 = UserMapper.selectName();
+    User User2 = UserMapper.selectMyName();
+    model.addAttribute("User1", User1);
     model.addAttribute("User2", User2);
 
     return "lec02.html";
   }
+
+ // @GetMapping("lec02/{id}")
+  //public String lec02Id(@PathVariable Integer id, ModelMap model) {
+    //User User3 = UserMapper.selectById(id);
+    //model.addAttribute("User3", User3);
+
+    //return "lec02.html";
+  //}
 
 }

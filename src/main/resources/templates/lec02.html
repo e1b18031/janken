@@ -10,20 +10,24 @@
   <a href="/logout">ログアウト</a>
   <h1>Lec02 GET!</h1>
 
-
-
-  <div th:if="${entry}">
-    エントリー
-    <ul>
-      <li th:each="user : ${entry.users}"><a href="/lec02/1">[[${user}]]</a></li>
-    </ul>
-    Hi <span sec:authentication="name"></span>
+  <div th:if="${User2}">
+    Hi <span>[[${User2.name}]]</span>
   </div>
 
-  <div th:if="${User2}">
-    ID:[[${User2.id}]]
-    user_1:[[${User2.user_1}]]
-    user_2:[[${User2.user_2}]]
+  <h2>エントリー</h2>
+  <div th:each="User,stat:${User1}">
+    <ul>
+      <li>[[${User.name}]]</li>
+    </ul>
+  </div>
+
+  <div th:if="${User3}">
+    試合結果
+    ID:[[${User3.id}]]
+    user_1:[[${User3.user_1}]]
+    user_2:[[${User3.user_2}]]
+    user_1の手:[[${User3.user_1_hand}]]
+    user_2の手:[[${User3.user_2_hand}]]
   </div>
 
   <a href="/lec02janken?hand=Gu">ぐー</a>
