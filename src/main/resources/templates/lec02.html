@@ -21,13 +21,15 @@
     </ul>
   </div>
 
-  <div th:if="${User3}">
-    試合結果
-    ID:[[${User3.id}]]
-    user_1:[[${User3.user_1}]]
-    user_2:[[${User3.user_2}]]
-    user_1の手:[[${User3.user_1_hand}]]
-    user_2の手:[[${User3.user_2_hand}]]
+  <h2>試合結果</h2>
+  <div th:each="match,stat:${Match1}">
+    <tr>
+      <td>ID:[[${match.id}]]</td>
+      <td>user_1:[[${match.user_1}]]</td>
+      <td>user_2:[[${match.user_2}]]</td>
+      <td>user_1の手:[[${match.user_1_hand}]]</td>
+      <td>user_2の手:[[${match.user_2_hand}]]</td>
+    </tr>
   </div>
 
   <a href="/lec02janken?hand=Gu">ぐー</a>

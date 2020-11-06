@@ -19,8 +19,9 @@ import oit.is.z0793.kaizi.janken.model.Entry;
 
 import oit.is.z0793.kaizi.janken.model.User;
 import oit.is.z0793.kaizi.janken.model.UserMapper;
-//import oit.is.z0793.kaizi.janken.model.ChamberUser;
-//import oit.is.z0793.kaizi.janken.model.UserInfo;
+import oit.is.z0793.kaizi.janken.model.Match;
+import oit.is.z0793.kaizi.janken.model.MatchMapper;
+
 
 @Controller
 public class Lec02Controller {
@@ -102,20 +103,26 @@ public class Lec02Controller {
   @Autowired
   UserMapper UserMapper;
 
-  @GetMapping("lec02")
+  @Autowired
+  MatchMapper MatchMapper;
+
+
+  @GetMapping("/lec02")
   public String lec02IdName(ModelMap model) {
     ArrayList<User> User1 = UserMapper.selectName();
     User User2 = UserMapper.selectMyName();
+    ArrayList<Match> Match1 = MatchMapper.selectAllMatch();
     model.addAttribute("User1", User1);
     model.addAttribute("User2", User2);
+    model.addAttribute("Match1", Match1);
 
     return "lec02.html";
   }
 
- // @GetMapping("lec02/{id}")
-  //public String lec02Id(@PathVariable Integer id, ModelMap model) {
-    //User User3 = UserMapper.selectById(id);
-    //model.addAttribute("User3", User3);
+  //@GetMapping("lec02")
+  //public String lec02IdMatch(ModelMap model) {
+    //ArrayList<Match> Match1 = MatchMapper.selectMatchById();
+    //model.addAttribute("Match1", Match1);
 
     //return "lec02.html";
   //}
