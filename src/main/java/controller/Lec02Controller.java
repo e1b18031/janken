@@ -43,7 +43,7 @@ public class Lec02Controller {
 
   //@param model
 
-  @GetMapping("/lec02janken")
+  @GetMapping("/matchjanken")
   public String lec02Janken(@RequestParam String hand, ModelMap model) {
     String result;
     if(hand.equals("Gu")){
@@ -56,7 +56,7 @@ public class Lec02Controller {
     //Janken result = new Janken(hand);
     model.addAttribute("myhand", hand);
     model.addAttribute("result", result);
-    return "lec02.html";
+    return "match.html";
   }
 
   //@PostMapping("/lec02janken/judge")
@@ -126,5 +126,14 @@ public class Lec02Controller {
 
     //return "lec02.html";
   //}
+
+  @GetMapping("/match")
+  public String matchPage(@RequestParam Integer id, ModelMap model){
+    User User3 = UserMapper.selectNamebyId(id+1);
+    User User4 = UserMapper.selectNamebyId(id);
+    model.addAttribute("User3", User3);
+    model.addAttribute("User4", User4);
+    return "match.html";
+  }
 
 }
