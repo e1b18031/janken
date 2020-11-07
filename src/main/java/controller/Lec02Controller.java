@@ -44,6 +44,7 @@ public class Lec02Controller {
   //@param model
 
   @GetMapping("/matchjanken")
+  @Transactional
   public String lec02Janken(@RequestParam String hand, ModelMap model) {
     String result;
     if(hand.equals("Gu")){
