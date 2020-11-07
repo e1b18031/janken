@@ -54,8 +54,10 @@ public class Lec02Controller {
       result = "You Win!";
     }
     //Janken result = new Janken(hand);
+
     model.addAttribute("myhand", hand);
     model.addAttribute("result", result);
+    MatchMapper.insertMatch(hand);
     return "match.html";
   }
 
