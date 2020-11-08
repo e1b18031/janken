@@ -21,6 +21,9 @@ import oit.is.z0793.kaizi.janken.model.User;
 import oit.is.z0793.kaizi.janken.model.UserMapper;
 import oit.is.z0793.kaizi.janken.model.Match;
 import oit.is.z0793.kaizi.janken.model.MatchMapper;
+import oit.is.z0793.kaizi.janken.model.MatchInfo;
+import oit.is.z0793.kaizi.janken.model.MatchInfoMapper;
+
 
 
 @Controller
@@ -103,11 +106,16 @@ public class Lec02Controller {
     //return "lec02.html";
   //}
 
+
+  //staticでないメソッドなんたらのエラーが出たらAutowiredのつけ忘れ
   @Autowired
   UserMapper UserMapper;
 
   @Autowired
   MatchMapper MatchMapper;
+
+  @Autowired
+  MatchInfoMapper MatchInfoMapper;
 
 
   @GetMapping("/lec02")
@@ -134,6 +142,7 @@ public class Lec02Controller {
   public String matchPage(@RequestParam Integer id, ModelMap model){
     User User3 = UserMapper.selectNamebyId(id+1);
     User User4 = UserMapper.selectNamebyId(id);
+    MatchInfoMapper.insertMatchInfo();
     model.addAttribute("User3", User3);
     model.addAttribute("User4", User4);
     return "match.html";
